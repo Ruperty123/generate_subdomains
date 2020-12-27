@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meatspin</title>
+
+</head>
+<body>
+<div style="margin: 50px;">
+	<center>
+		<form id="form">
+			<div>
+				<label for="prefix">Prefix</label>
+				<input type="text" name="prefix" id="prefix" placeholder="prefix">
+			</div>
+			<br>
+			<div>
+				<label for="domain">Domain</label>
+				<input type="text" name="domain" id="domain" placeholder="domain">
+			</div>
+			<br>
+			<div>
+				<label for="count">Count</label>
+				<input type="number" value="1000" name="count" id="count" placeholder="count">
+			</div>
+			<br>
+			<div>
+				<button id="go" type="button">Go</button>
+			</div>
+			<br>
+			<div>
+				<textarea style="width: 100%;" name="result" id="result" placeholder="result" rows="50" width="100%"> 
+					
+				</textarea>
+			</div>
+		</form>
+	</center>
+</div>
+<script type="text/javascript">
+	document.querySelector('#go').addEventListener('click', function() {
+		let prefix = document.querySelector('#prefix'),
+			domain = document.querySelector('#domain'),
+			count = document.querySelector('#count'),
+			result = document.querySelector('#result'),
+			string = '';
+
+		if (prefix.value != '' && domain.value != '' && count.value != '') {
+
+			for (var i = 0; i < Number(count.value); i++) {
+				if (i != 0) {
+					string += ',';	
+				}
+				string += (prefix.value + (i + 1) + '.' + domain.value);
+			}
+
+			result.value = string;
+
+		} else {
+			alert('Ошибка по причине: иди нахуй')
+		}
+
+		return false;
+	});
+</script>
+</body>
+</html>
